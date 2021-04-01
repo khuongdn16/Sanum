@@ -19,9 +19,9 @@ const Profile = () => {
       statusMessage = 'You achieved your weekly goal!';
       // alert('Celebrate! You achieved your weekly goal!');
     } else if (stats < 0){
-      statusMessage = `You have ${stats} calories to go!`;
+      statusMessage = `You have ${Math.abs(stats)} calories to go!`;
     } else {
-      statusMessage = `You have exceeded your goals by ${stats} calories!!!`
+      statusMessage = `You have exceeded your goals by ${Math.abs(stats)} calories!!!`
     }
     return statusMessage;
   };
