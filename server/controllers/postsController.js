@@ -1,8 +1,13 @@
 const db = require('../models/model');
 
+
 const postsController = {
   getPosts: (req, res, next) => {
-    const queryStr = `select * from Posts;`;
+    const queryStr = `select p.postid, p.picurl, p.caption, p.posttype, p.calories, u.firstname
+    FROM posts p
+    LEFT join  users u
+    on p.userid = u.userid;`;
+
     db.query(queryStr)
       .then(data => {
         res.locals.posts = data.rows;

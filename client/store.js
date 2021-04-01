@@ -18,7 +18,7 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     let newState;
-    console.log('state>>>>>>>>>', state)
+    // console.log('state>>>>>>>>>', state);
     switch (action.type) {
       case 'SET_USER':
         newState = {
@@ -36,6 +36,14 @@ const StateProvider = ({ children }) => {
         newState = {
           ...state,
           goal: action.payload.goal,
+        };
+        return newState;
+
+      case 'CALCULATE_CALORIES':
+        newState = {
+          ...state,
+          totalIntake: action.payload.totalIntake,
+          caloriesBurnt: action.payload.caloriesBurnt
         };
         return newState;
 

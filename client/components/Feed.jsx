@@ -1,4 +1,5 @@
-import React, { Component, useContext, useEffect } from 'react';
+/* eslint-disable prettier/prettier */
+import React, { Component, useContext, useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import FeedItem from './FeedItem';
 import NewExercise from './NewExercise';
@@ -10,17 +11,52 @@ import { store } from '../store';
 // request all posts and update the total caloric intake / expense from the post
 // for the current user
 
-const fetchFeed = () => {
-  // fetch all posts data
-  // iterate through each post, push the data into a feedItem component
-  // at the same time, calculate the total
-  // dispatch action to update store
-};
-
 const Feed = (props) => {
   const { dispatch, state } = useContext(store);
   const { firstname, lastname, userId } = state;
+  const [display, setDisplay] = useState([]);
 
+  const fetchFeed = () => {
+    // fetch all posts data
+    let totalIntake = 0;
+    let caloriesBurnt = 0;
+    fetch('/posts')
+      .then(resp => resp.json())
+      .then(data => {
+        const posts = [];
+        console.log(data);
+        data.posts.forEach((post, idx) => {
+          if (post.posttype === 'meal') totalIntake += post.calories;
+          else caloriesBurnt += post.calories;
+
+          // display FeedItem
+          posts.push(<FeedItem
+            key = {idx}
+            firstname = {post.firstname}
+            caption = {post.caption}
+            calories = {post.calories}
+            picUrl = {post.picurl}
+          />);
+        });
+        // console.log('posts >>> ', posts);
+        setDisplay(posts);
+        // dispatch calorie calculation
+        dispatch({
+          type: 'CALCULATE_CALORIES',
+          payload: {
+            totalIntake,
+            caloriesBurnt
+          }
+        });
+      })
+      .catch(err => console.log('Error fetching posts in Feed >>', err));
+  };
+
+  useEffect(() => {
+    fetchFeed();
+    // setInterval(fetchFeed, 3000);
+  },[]);
+  
   return (
     <div className='feed-container'>
       <Navbar />
@@ -40,7 +76,7 @@ const Feed = (props) => {
         </div>
 
         <div className="feed">
-          <FeedItem />
+          {display}
         </div>
       </div>
     </div>

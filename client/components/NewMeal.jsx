@@ -2,11 +2,15 @@ import React, { Component, useState } from 'react';
 
 const NewMeal = (props) => {
   const [calories, setCalories] = useState('');
-
   const [caption, setCaption] = useState('');
   const [picUrl, setPicUrl] = useState('');
   function submitMeal(e) {
     const input = document.getElementById('img');
+    const dateObj = new Date();
+    const month = dateObj.getUTCMonth() + 1; 
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+    const todayDate = year + "/" + month + "/" + day;
 
     const data = {
       caption,
@@ -14,7 +18,7 @@ const NewMeal = (props) => {
       picUrl,
       postType: 'meal',
       userID: props.userId,
-      timeStamp: '2021-03-31',
+      timeStamp: todayDate,
     };
     fetch('/posts', {
       method: 'POST',
@@ -36,21 +40,13 @@ const NewMeal = (props) => {
     <div className='modal'>
       <h2>Enter new meal!</h2>
       <br></br>
-
-      <label>
-        Meal Name:
-        <input type="text" />
-      </label>
       <br></br><br></br>
       <label>
         Calories:
         <input type="text" onChange={(event) => setCalories(event.target.value)} />
       </label>
       <br></br><br></br>
-      <label>
-        Carbohydrates:
-        <input type="text" />
-      </label>
+  
       <br></br><br></br>
       <label>
         Caption:
