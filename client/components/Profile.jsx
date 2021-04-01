@@ -67,13 +67,12 @@ const Profile = () => {
       <Navbar/>
 
       <div className='profile-box'>
-        <div id='personalInfo'>
-          <h4>First Name: <span style={{ color: 'green' }}>{firstname}</span></h4>
-          <h4>Last Name: <span style={{ color: 'green' }}>{lastname}</span></h4>
-          <h4>Email: <span style={{ color: 'green' }}>{email}</span></h4>
-        </div>
+        <div id='profile'>
+          <h3>First Name: <span style={{ color: 'green' }}>{firstname}</span></h3>
+          <h3>Last Name: <span style={{ color: 'green' }}>{lastname}</span></h3>
+          <h3>Email: <span style={{ color: 'green' }}>{email}</span></h3>
+          <br></br> <br></br>
 
-        <div className='profile'>
           <div id= 'status-message' >
             <h2>{message()}</h2>
           </div>
@@ -93,22 +92,38 @@ const Profile = () => {
           </div>
 
           <div>
-            <h3>Current Goal: {goal}</h3>
-            <h3>Burnt Calories: {caloriesBurnt}</h3>
-            <h3> Calorie Intake: {totalIntake}</h3>
+            <h3>Current Goal: <span style={{ color: 'green' }}>{goal}</span></h3>
+            <h3>Burnt Calories: <span style={{ color: 'green' }}>{caloriesBurnt}</span></h3>
+            <h3> Calorie Intake: <span style={{ color: 'green' }}>{totalIntake}</span></h3>
           </div>
-          
-          <div id='pics'>
-            <img id='biking' src='src/cycling.jpg' alt= 'biking' width='500'/>
-            <img id='run' src='src/run.jpg' alt= 'running'/>
-            <img id='swim' src='src/swimmer.jpg' alt= 'swimming'/>
-            <img id='lift' src='src/lifting.jpg' alt= 'lifting'/>
-          </div>
-          
+
           <div id= 'encourage'>
-            <h3>Keep Up The Good Work!</h3>
+            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+            <h1><span style={{ color: 'green' }}>Keep Up The Good Work!</span></h1>
           </div>
         </div>
+      {/* </div> */}
+
+        <div className='pics-container'>
+          <div className='pics-row'>
+            <div className='pics-column'>
+              <img id='swim' src='src/swimmer.jpg' alt='swimming'/>
+              <img id='biking' src='src/cycling.jpg' alt='biking'/>
+              <img id='lift' src='src/lifting.jpg' alt='lifting'/>
+            </div>
+            <div class='pics-column'>
+              <img id='two_dancers' src='src/two_dancers.jpg' alt='two_dancers'/>
+              <img id='run' src='src/run.jpg' alt='running'/>
+              <img id='climber' src='src/climber.jpg' alt='climber'/>
+            </div>
+            <div class='pics-column'>
+              <img id='yoga' src='src/yoga.jpeg' alt='yoga'/>
+              <img id='dancer' src='src/dancer.jpeg' alt='dancer'/>
+              <img id='swim' src='src/swimmer.jpg' alt='swimming'/>
+            </div>
+          </div>
+        </div>
+          
       </div>
     </div>
   )

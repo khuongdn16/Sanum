@@ -30,6 +30,7 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin: 15px 32px;
 }
 
 .login {
@@ -37,6 +38,15 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#goal {
+  font-size: 16px;
+  padding: 15px 32px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 #google-btn {
@@ -89,7 +99,7 @@ button {
   width: 40px;
   height: 40px;
 }
-
+g
 #nav-logout {
   display: flex;
   // flex-grow: 0;
@@ -131,8 +141,8 @@ button {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 0 0 0 15%;
-  justify-content: space-around;
+  margin: 15% 0 0 15%;
+  height: 50px;
 }
 
 .feed {
@@ -161,23 +171,17 @@ button {
 
 .profile-box{
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 
-#personal-info{
+#profile {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin: 0 0 0 15%;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  margin: 2% 15% 0 5%;
-  flex-grow: 2;
-  justify-content: space-around;
+  margin: 2% 0 0 10%;
+  width: 40%;
+  height: 50%;
 }
 
 .modal {
@@ -185,7 +189,34 @@ button {
   padding: 199px 250px;
 }
 
-#pics {
-  width: 300px;
-  height: 300px;
+.pics-container {
+  display: flex;
+  width: 85%;
+  height: 50%;
+}
+
+.pics-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.pics-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.pics-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
 }
